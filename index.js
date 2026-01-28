@@ -3,8 +3,7 @@ const app= express();
 const session = require('express-session');
 const MongoStore = require('connect-mongo').default;
 
-// session is like a box , where we store User info//
-// session is also a type of middleware ,,, stat by use 
+
 app.use(session({
       secret : "mysecertkey",
       resave: false,
@@ -30,7 +29,7 @@ app.get("/setUsername", (req,res)=>{
          res.send('<h1>session is get made</h1>')
 })
 
-// once initialized , now session ready to use on other pgs
+
 app.get("/getUsername", (req,res)=>{
          if(req.session.username){
                res.send(`the username is is ${req.session.username} `);
@@ -48,8 +47,7 @@ app.get("/jetUsername", (req,res)=>{
 }) 
 
 
-// no need , but if u want to delete sesson manually , 
-// otherwise it get deleted autimotically as per seted time (24hrs)
+
 app.get("/destroy", (req,res)=>{
       req.session.destroy((err)=>{
             if(err){
@@ -68,5 +66,5 @@ app.get("/destroy", (req,res)=>{
 
 // start server//
 app.listen(3000,()=>{
-         console.log("started");
+         console.log("started at 3000");
 })
